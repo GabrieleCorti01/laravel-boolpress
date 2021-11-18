@@ -17,14 +17,10 @@ Route::get('/', 'Guests\HomeController@index')->name('guests.home');
 
 Route::prefix('guests')->name('guests.')->namespace('Guests')->group(function(){
 
-    Route::get('/index', 'PostController@index')->name('index');
-    Route::resource('/post', 'PostController');
+    Route::resource('/post', PostController::class)->only([
+        'index', 'show'
+    ]);
 });
-
-// Route::get('/guests/index', 'Guests\PostController@index')->name('guests.posts.index');
-// Route::get('/guests/show', 'Guests\PostController@show')->name('guests.posts.show');
-
-
 
 Auth::routes();
 
@@ -34,6 +30,9 @@ Route::middleware('auth')  // devi essere autenticato
     ->name('admin.') // inserisci come prefisso per ogni nome di tutte le route figlie admin.
     ->group(function(){ // e raggruppale in:
         Route::get('/', 'HomeController@index')->name('home');
-        Route::resource('posts', PostController::class);        
+        
+        // Route::resource('/post', PostController::class)->except([
+        //     'index', 'show' 
+        // ]);        
 });
 

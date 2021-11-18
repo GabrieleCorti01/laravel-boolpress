@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
         
-        return view('guests.posts.index', compact('posts'));
+        return view('guests.post.index', compact('posts'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('guests.posts.show', compact('post'));
+        return view('guests.post.show', compact('post'));
     }
 
     /**
