@@ -15,7 +15,7 @@
                 <h2>{{ $post->title }}</h2>
                 <h3>{{ $post->author }}</h3>
                 <p>{{ $post->post_content }}</p>
-                <a href="{{ route('guests.index') }}" class="btn btn-primary">Torna alla HOME</a>
+                <a href="{{ route('guests.post.index') }}" class="btn btn-primary">Torna alla HOME</a>
             </div>
 
         </div>
