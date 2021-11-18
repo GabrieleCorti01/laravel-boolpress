@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Titolo: {{ $post->title }}</h5>
-                        <p>Categoria: @if ($post->category) {{ $post->category->name }} @else Nessuna categoria @endif</p>
+                        <p class="btn btn-light">Categoria: @if ($post->category) {{ $post->category->name }} @else Nessuna categoria @endif</p>
                         <p class="card-text">Autore: {{ $post->author }}</p>
                         <a href="{{ route('guests.post.show', $post->id) }}" class="btn btn-primary">Visualizza</a>
                     </div>
