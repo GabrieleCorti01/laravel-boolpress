@@ -31,8 +31,8 @@ Route::middleware('auth')  // devi essere autenticato
     ->group(function(){ // e raggruppale in:
         Route::get('/', 'HomeController@index')->name('home');
         
-        // Route::resource('/post', PostController::class)->except([
-        //     'index', 'show' 
-        // ]);        
+        Route::resource('/post', PostController::class)->except([
+            'index', 'show' 
+        ]);        
 });
 

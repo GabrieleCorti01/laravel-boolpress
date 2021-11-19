@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('guests.index') }}">Post</a>
+                    <a href="{{ route('guests.post.index') }}">Post</a>
                 </div>
             </div>
         </div>

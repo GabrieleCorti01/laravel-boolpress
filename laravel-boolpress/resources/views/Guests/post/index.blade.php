@@ -2,9 +2,16 @@
 
 @section('content')
     <div class="container p-5">
-        <div>
-            <h1 class="mb-4">Libreria Web</h1>
-            <h4>di Gabriele Corti</h4>
+        <div class="row">
+            <div class="col-9 mb-4">
+                <h1>Libreria Web</h1>
+                <h4>di Gabriele Corti</h4>
+            </div>
+
+            <div class="col-3 text-end align-self-center">
+                <a href="{{ route('admin.post.create') }}" class="btn btn-primary">Crea un nuovo post</a>
+            </div>
+
         </div>
         
         <div class="row justify-content-around">
