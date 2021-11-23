@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Category;
 use App\Models\Post;
@@ -75,9 +77,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -87,9 +91,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|unique:posts|max:120',
+            'post_content' => 'required|string|min:20',
+            'image_url' => 'string|min:5',
+            'category_id' => 'nullable|exist:categories,id',
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+
+        $post->fill($data);
+        $post->slug = Str::slug($post->title, '-');
+        $post->update();
     }
 
     /**
