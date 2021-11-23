@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function UserInfo(){
         return $this->hasOne('App\Models\UserInfo');
     }
+
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
 }

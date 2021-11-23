@@ -46,7 +46,7 @@ class PostController extends Controller
             'author'=> 'required|string|max:120',
             'post_content' => 'required|string|min:20',
             'image_url' => "string|min:4",
-            'category_id' => "nullable"
+            'category_id' => "nullable",
         ]);
 
         $data = $request->all();
@@ -55,7 +55,7 @@ class PostController extends Controller
         
         $post->save();
 
-        return redirect()->route('admin.posts.show', compact('post'));
+        return redirect()->route('admin.post.show', compact('post'));
     }
 
     /**

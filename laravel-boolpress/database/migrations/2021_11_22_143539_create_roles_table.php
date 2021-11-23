@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string("title", 100);
-            $table->string("author", 100);
-            $table->text("post_content");
-            $table->string("slug", 100)->nullable();
-            $table->text('image_url');
+            $table->unsignedBigInteger('rank');
+            $table->string('name')->unique();
+            $table->char('color', 7)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('roles');
     }
 }
