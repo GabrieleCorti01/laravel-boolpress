@@ -3,7 +3,7 @@
 <div class="create-wrapper">
 
     @section('content')
-        <form action="{{ route('admin.post.update') }}" method="POST" class="row justify-content-center">
+        <form action="{{ route('admin.post.update', $post) }}" class="row justify-content-center" method="POST">
             @csrf
             @method('PATCH')
         
