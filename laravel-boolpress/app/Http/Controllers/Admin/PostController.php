@@ -107,7 +107,7 @@ class PostController extends Controller
         $post->slug = Str::slug($post->title, '-');
         $post->update();
 
-        return redirect()->route('admin.posts.show', compact('post'));
+        return redirect()->route('admin.post.show', compact('post'));
     }
 
     /**

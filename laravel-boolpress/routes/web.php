@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Guests\HomeController@index')->name('guests.home');
 
+Route::namespace('Guests')->name('guests.')->group(function() {
+    Route::get('/contatti', 'MailController@creteContactForm')->name('contacts');
+    Route::get('/contatti', 'MailController@contactFormHandler')->name('contacts.send');
+    Route::get('/thanks', 'MailController@contactFormEnder')->name('thanks');
+});
+
 Route::prefix('guests')->name('guests.')->namespace('Guests')->group(function(){
 
     Route::resource('/post', PostController::class)->only([
